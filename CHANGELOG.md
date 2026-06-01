@@ -13,3 +13,8 @@ the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 - Release channel bootstrapped. No firmware published yet — the first
   `python -m cwmtools.ota.publish` run will append an entry above this line
   and attach the `cwm-<SKU>-<version>.bin` + `update-<SKU>.json` assets.
+
+## [0.6.0] - 2026-06-01
+
+- Firmware 0.6.0 published for SKU(s): DEV.
+
