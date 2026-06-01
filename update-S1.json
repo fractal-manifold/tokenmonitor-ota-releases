@@ -1,6 +1,6 @@
 {
   "version": "0.6.0",
-  "manifest_b64": "eyJrZXlfaWQiOiJlZDI1NTE5LWJmMDgzYWM1IiwibWluX3NlY3VyZV92ZXJzaW9uIjozOTMyMTYsInNoYTI1NiI6IjZhYjM4NmUzMGJkZDJhZmUzOWQzZWNkM2I4NjIxNGU2OWEzYTg3NGI4NTAwMzU1NWNhM2RhYzBmMjUyZDg1Y2EiLCJzaXplIjoyMDc2MjI0LCJza3UiOiJTMSIsInZlcnNpb24iOiIwLjYuMCJ9",
-  "signature_b64": "E/BvyiwLrTIUy5uWzAfNIZulmM1vUSkyZWhud44pRZl81mZ9BrlQwl79eQpkwTdwe627tM9r4JQ4CIwKLmOFAg==",
+  "manifest_b64": "eyJrZXlfaWQiOiJlZDI1NTE5LWJmMDgzYWM1IiwibWluX3NlY3VyZV92ZXJzaW9uIjozOTMyMTYsInNoYTI1NiI6IjA4YmRkZDZjZTU3NzE1N2YyMTAxOTIxNDBiZjE4MjY3MWM2NjZkZTNhZWRhNWFiNWUxNjk5OGMwMzk3MTc3OTMiLCJzaXplIjoyMDc2MjI0LCJza3UiOiJTMSIsInZlcnNpb24iOiIwLjYuMCJ9",
+  "signature_b64": "7+p0+CEJVuxbuov/FYma+modZ9BgPsIAhTC7OeNy/ohTN/SfZLUE/tPSc1PT635o6AKCHKvciraBdMmnDFCzAg==",
   "bin_url": "https://github.com/fractal-manifold/cwm-ota-releases/releases/download/v0.6.0/cwm-S1-0.6.0.bin"
 }

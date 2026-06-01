@@ -16,6 +16,11 @@ the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 
 ## [0.6.0] - 2026-06-01
 
+- Firmware 0.6.0 published for SKU(s): S1, DEV.
+  Rebuild: esp_app_desc app_version now correctly reports 0.6.0 (prior 0.6.0 asset self-reported 0.5.8).
+
+## [0.6.0] - 2026-06-01
+
 - Firmware 0.6.0 published for SKU(s): DEV, S1.
 
 ## [0.6.0] - 2026-06-01
