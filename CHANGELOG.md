@@ -16,5 +16,8 @@ the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 
 ## [0.6.0] - 2026-06-01
 
-- Firmware 0.6.0 published for SKU(s): DEV.
+- Firmware 0.6.0 published for SKU(s): DEV, S1.
 
+## [0.6.0] - 2026-06-01
+
+- Firmware 0.6.0 published for SKU(s): DEV.
