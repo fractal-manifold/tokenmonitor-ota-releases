@@ -14,6 +14,11 @@ the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
   `python -m cwmtools.ota.publish` run will append an entry above this line
   and attach the `cwm-<SKU>-<version>.bin` + `update-<SKU>.json` assets.
 
+## [0.6.6] - 2026-06-02
+
+- Firmware 0.6.6 published for SKU(s): S1.
+  Release channels (stable/dev) + dev canary; TweetNaCl Ed25519 verify.
+
 ## [0.6.5] - 2026-06-02
 
 - Firmware 0.6.5 published for SKU(s): S1.
