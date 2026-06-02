@@ -14,6 +14,11 @@ the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
   `python -m cwmtools.ota.publish` run will append an entry above this line
   and attach the `cwm-<SKU>-<version>.bin` + `update-<SKU>.json` assets.
 
+## [0.6.4] - 2026-06-02
+
+- Firmware 0.6.4 published for SKU(s): S1.
+  Enforce signed OTA on dev builds (real Ed25519 verify via vendored TweetNaCl; IDF mbedtls 4.0 ships no EdDSA). Fix dashboard %-tearing and Claude night status colour. OTA boot-timing/clear_pending/tx-buffer fixes.
+
 ## [0.6.1] - 2026-06-02
 
 - Firmware 0.6.1 published for SKU(s): S1.
