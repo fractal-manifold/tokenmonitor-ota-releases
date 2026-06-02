@@ -43,11 +43,41 @@ signing key. The broker holds only the **public** verification key; the
 private signing key never leaves the maintainer's machine. The firmware
 binary itself is additionally protected by Secure Boot v2 on factory units.
 
+## Release channels: stable vs dev
+
+There are two channels, so test builds only ever reach development units:
+
+- **stable** (end users): a normal per‑version release tagged `vX.Y.Z`.
+  GitHub serves the newest non‑prerelease as `latest`, which is what the
+  `latest/download/update-<SKU>.json` URL above resolves to. Production
+  units only ever follow this channel.
+- **dev** (development units): a single **rolling prerelease** on the fixed
+  tag `dev`. Each dev publish clobbers that release's `update-<SKU>.json`
+  asset, so the broker has a stable URL that always points at the newest dev
+  build:
+
+  ```
+  https://github.com/fractal-manifold/cwm-ota-releases/releases/download/dev/update-<SKU>.json
+  ```
+
+  Because it's marked **prerelease**, GitHub never serves it as `latest`, so
+  a stable device can't fetch it. The dev manifest additionally carries
+  `"channel":"dev"`, and the firmware **refuses** it on a production unit
+  (only units whose serial FAC == `DEV` accept it). Dev indices live under
+  `dev/` in this repo.
+
+Publish with `--channel dev`; dev units must be registered with
+`channel = "dev"` in the broker. Reverting a bad dev build (within its
+canary window) uses `wall_monitor_revert_firmware` against the previous
+index — see the monorepo CLAUDE.md "Release channels + canary".
+
 ## Layout
 
-- `CHANGELOG.md` — human‑readable release notes.
-- `update-<SKU>.json` — the per‑SKU index (also attached to each release as
-  an asset; the copy in the repo tree is for diff‑friendly history).
+- `CHANGELOG.md` — human‑readable stable release notes; `dev/CHANGELOG.md`
+  for the dev channel.
+- `update-<SKU>.json` — the per‑SKU stable index (root); `dev/update-<SKU>.json`
+  for dev. Each is also attached to its release as an asset; the copy in the
+  repo tree is for diff‑friendly history.
 - Firmware `.bin` files ship **only** as GitHub release assets, never in the
   git tree.
 
