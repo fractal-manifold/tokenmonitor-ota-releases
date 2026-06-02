@@ -14,6 +14,11 @@ the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
   `python -m cwmtools.ota.publish` run will append an entry above this line
   and attach the `cwm-<SKU>-<version>.bin` + `update-<SKU>.json` assets.
 
+## [0.6.1] - 2026-06-02
+
+- Firmware 0.6.1 published for SKU(s): S1.
+  Fix stale 'Server unavailable' toast lingering on the dashboard; reflow loading splash so the error banner no longer overlaps the ambient strip; faster cold-boot reconnect; English UI strings.
+
 ## [0.6.0] - 2026-06-01
 
 - Firmware 0.6.0 published for SKU(s): S1, DEV.
