@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.6.9-dev.202606031133] - 2026-06-03
+
+- Firmware 0.6.9-dev.202606031133 published for SKU(s): S1.
+
 ## [0.6.8-dev.202606030731] - 2026-06-03
 
 - Firmware 0.6.8-dev.202606030731 published for SKU(s): S1.
