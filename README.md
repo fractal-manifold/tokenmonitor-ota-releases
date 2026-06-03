@@ -71,6 +71,21 @@ Publish with `--channel dev`; dev units must be registered with
 canary window) uses `wall_monitor_revert_firmware` against the previous
 index — see the monorepo CLAUDE.md "Release channels + canary".
 
+### Dev version naming
+
+Dev builds toward the next stable carry a SemVer prerelease suffix
+`<next-stable>-dev.<YYYYMMDDhhmm>`. While developing 0.6.8 you publish
+`0.6.8-dev.202606021930`, then `0.6.8-dev.202606022100`, and so on. Under
+SemVer `X.Y.Z-dev.<ts>` is always *older* than `X.Y.Z` final, and among
+prereleases the larger timestamp wins — so the newest dev build installs
+during development, and cutting `0.6.8` (no suffix) graduates over every
+`0.6.8-dev.*`. The version's base (0.6.8) drives the anti‑rollback floor;
+the `-dev.<ts>` suffix only orders builds. `cwmtools.ota.publish --channel
+dev --version 0.6.8` reads the exact `-dev.<ts>` from the firmware binary
+(it's baked at build time), so you pass only the base. A `-dev.<ts>` build
+is **only** valid on the dev channel; the firmware refuses a prerelease
+version that isn't marked `channel:"dev"`.
+
 ## Layout
 
 - `CHANGELOG.md` — human‑readable stable release notes; `dev/CHANGELOG.md`
