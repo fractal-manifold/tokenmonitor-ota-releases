@@ -15,6 +15,11 @@ Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
 - Nothing unreleased.
 
+## [0.7.2] - 2026-06-08
+
+- Firmware 0.7.2 published for SKU(s): S1.
+  Device-authoritative display settings: report-back endpoint so the broker stops reverting the user's theme/brightness/volume/autorotate. Promoted from dev canary (byte-identical to the soaked 0.7.2 build).
+
 ## [0.7.2] - 2026-06-08 (dev)
 
 - Firmware 0.7.2 published for SKU(s): S1.
