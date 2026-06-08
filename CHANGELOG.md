@@ -15,6 +15,10 @@ Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
 - Nothing unreleased.
 
+## [0.7.3-dev.202606090022] - 2026-06-09 (dev)
+
+- Firmware 0.7.3-dev.202606090022 published for SKU(s): S1.
+
 ## [0.7.2] - 2026-06-08
 
 - Firmware 0.7.2 published for SKU(s): S1.
