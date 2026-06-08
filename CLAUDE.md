@@ -14,6 +14,9 @@ under the rollback safety net. See the monorepo `CLAUDE.md` ("OTA pipeline",
   here. They are generated and pushed by `python -m cwmtools.ota.publish`. The
   copies in the git tree are diff-friendly history; the live artifacts are the
   GitHub **release assets**.
+- **One unified `CHANGELOG.md` at the repo root** for both channels (dev entries
+  tagged `(dev)`). There is no longer a per-channel `dev/CHANGELOG.md`; only the
+  `dev/update-<SKU>.json` index lives under the `dev/` subdir.
 - **The signing key is offline.** Publishing signs the manifest locally with
   `firmware/secrets/ota_signing_key.pem`. The broker holds only the *public*
   key. A `.bin` on a public URL is useless without a valid signature.
@@ -46,7 +49,7 @@ under the rollback safety net. See the monorepo `CLAUDE.md` ("OTA pipeline",
 | | stable (end users) | dev (development units) |
 |---|---|---|
 | Version | `X.Y.Z` (no suffix) | `X.Y.Z-dev.<YYYYMMDDhhmm>` |
-| GitHub | per-version release `vX.Y.Z`, auto-`latest` | single rolling **prerelease** tag `dev`, assets clobbered each publish |
+| GitHub | per-version release `vX.Y.Z`, auto-`latest` | single rolling **prerelease** tag `dev`, **deleted + recreated** at the new commit each publish (refreshes its date / commit link / list order) |
 | Index URL | `releases/latest/download/update-<SKU>.json` | `releases/download/dev/update-<SKU>.json` |
 | Manifest `channel` | omitted (absent == stable) | `"channel":"dev"` |
 | Who installs it | every unit | only units whose serial `FAC=="DEV"` (firmware refuses dev on production) |

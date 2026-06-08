@@ -88,8 +88,8 @@ version that isn't marked `channel:"dev"`.
 
 ## Layout
 
-- `CHANGELOG.md` — human‑readable stable release notes; `dev/CHANGELOG.md`
-  for the dev channel.
+- `CHANGELOG.md` — single human‑readable history for BOTH channels (dev
+  entries tagged `(dev)`). There is no separate `dev/CHANGELOG.md`.
 - `update-<SKU>.json` — the per‑SKU stable index (root); `dev/update-<SKU>.json`
   for dev. Each is also attached to its release as an asset; the copy in the
   repo tree is for diff‑friendly history.

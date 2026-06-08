@@ -2,21 +2,44 @@
 
 All notable firmware releases for the Claude Wall Monitor are documented
 here. Each entry corresponds to a signed GitHub release whose assets the
-cwm-mcp broker discovers and stages automatically.
+cwm-mcp broker discovers and stages automatically. Both channels share this
+one chronological history; **dev** (prerelease / canary) entries are tagged
+`(dev)`, **stable** entries are not.
 
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com);
 versions follow [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`,
 the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
+Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
 ## [Unreleased]
 
-- Release channel bootstrapped. No firmware published yet — the first
-  `python -m cwmtools.ota.publish` run will append an entry above this line
-  and attach the `cwm-<SKU>-<version>.bin` + `update-<SKU>.json` assets.
+- Nothing unreleased.
+
+## [0.7.2] - 2026-06-08 (dev)
+
+- Firmware 0.7.2 published for SKU(s): S1.
+  Device-authoritative display settings: report-back endpoint so the broker stops reverting the user's theme/brightness/volume/autorotate.
+
+## [0.7.1] - 2026-06-08 (dev)
+
+- Firmware 0.7.1 published for SKU(s): S1.
+
+## [0.6.9-dev.202606031133] - 2026-06-03 (dev)
+
+- Firmware 0.6.9-dev.202606031133 published for SKU(s): S1.
 
 ## [0.6.8] - 2026-06-03
 
 - Firmware 0.6.8 published for SKU(s): S1.
+
+## [0.6.8-dev.202606030731] - 2026-06-03 (dev)
+
+- Firmware 0.6.8-dev.202606030731 published for SKU(s): S1.
+
+## [0.6.8-dev.202606030727] - 2026-06-03 (dev)
+
+- Firmware 0.6.8-dev.202606030727 published for SKU(s): S1.
+  First dev-channel iteration toward 0.6.8 (prerelease ordering test).
 
 ## [0.6.7] - 2026-06-03
 
