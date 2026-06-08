@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.7.2] - 2026-06-08
+
+- Firmware 0.7.2 published for SKU(s): S1.
+  Device-authoritative display settings: report-back endpoint so the broker stops reverting the user's theme/brightness/volume/autorotate.
+
 ## [0.7.1] - 2026-06-08
 
 - Firmware 0.7.1 published for SKU(s): S1.
