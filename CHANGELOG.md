@@ -15,6 +15,11 @@ Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
 - Nothing unreleased.
 
+## [0.8.0-dev.202606091938] - 2026-06-09 (dev)
+
+- Firmware 0.8.0-dev.202606091938 published for SKU(s): S1.
+  Pet mascot: dashboard tamagotchi that reacts to your token usage; the pet screen now re-themes live on Day / Night / Auto.
+
 ## [0.7.3-dev.202606090022] - 2026-06-09 (dev)
 
 - Firmware 0.7.3-dev.202606090022 published for SKU(s): S1.

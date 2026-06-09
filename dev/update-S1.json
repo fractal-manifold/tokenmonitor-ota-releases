@@ -1,0 +1,6 @@
+{
+  "version": "0.8.0-dev.202606091938",
+  "manifest_b64": "eyJjaGFubmVsIjoiZGV2Iiwia2V5X2lkIjoiZWQyNTUxOS1iZjA4M2FjNSIsIm1pbl9zZWN1cmVfdmVyc2lvbiI6NTI0Mjg4LCJzaGEyNTYiOiJiY2UxY2JiZDhjMGQ2NTFhMzJkZmM4MWYxM2M0ZGEzMmIwZWY1NDE3YmYzZjZiYzM0YTE5N2ZkNDEyNGM1OTgyIiwic2l6ZSI6MjE2Njg4MCwic2t1IjoiUzEiLCJ2ZXJzaW9uIjoiMC44LjAtZGV2LjIwMjYwNjA5MTkzOCJ9",
+  "signature_b64": "qXmacug9+ajKI8hflEzqIYtbFIyTaUF8HVM03IingOkY1KD3zlfZc4/2SLJO2EsOgkTYJudFlCN2XNExwwgEBg==",
+  "bin_url": "https://github.com/fractal-manifold/cwm-ota-releases/releases/download/v0.8.0-dev.202606091938/cwm-S1-0.8.0-dev.202606091938.bin"
+}
