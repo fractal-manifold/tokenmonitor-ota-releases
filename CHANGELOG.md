@@ -11,10 +11,6 @@ versions follow [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`,
 the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
-## [Unreleased]
-
-- Nothing unreleased.
-
 ## [0.8.0-dev.202606091938] - 2026-06-09 (dev)
 
 - Firmware 0.8.0-dev.202606091938 published for SKU(s): S1.
