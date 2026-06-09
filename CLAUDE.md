@@ -49,8 +49,8 @@ under the rollback safety net. See the monorepo `CLAUDE.md` ("OTA pipeline",
 | | stable (end users) | dev (development units) |
 |---|---|---|
 | Version | `X.Y.Z` (no suffix) | `X.Y.Z-dev.<YYYYMMDDhhmm>` |
-| GitHub | per-version release `vX.Y.Z`, auto-`latest` | single rolling **prerelease** tag `dev`, **deleted + recreated** at the new commit each publish (refreshes its date / commit link / list order) |
-| Index URL | `releases/latest/download/update-<SKU>.json` | `releases/download/dev/update-<SKU>.json` |
+| GitHub | per-version release `vX.Y.Z`, auto-`latest` | per-version **immutable prerelease** tag `vX.Y.Z-dev.<ts>` (never `latest`, never deleted; newest found via the Releases API) |
+| Index URL | `releases/latest/download/update-<SKU>.json` | `releases/download/vX.Y.Z-dev.<ts>/update-<SKU>.json` (no static "latest prerelease" URL) |
 | Manifest `channel` | omitted (absent == stable) | `"channel":"dev"` |
 | Who installs it | every unit | only units whose serial `FAC=="DEV"` (firmware refuses dev on production) |
 
@@ -59,6 +59,57 @@ among prereleases the larger 12-digit timestamp wins. So the newest dev build
 installs during development, and cutting `X.Y.Z` final graduates over every
 `X.Y.Z-dev.*`. The base (`X.Y.Z`) drives the anti-rollback floor; the suffix
 only orders builds.
+
+## Changelog & release notes — what to write
+
+`cwmtools.ota.publish` writes ALL the release prose for you; the only thing you
+author is one short line passed via `--notes`. Two artifacts are generated from
+it:
+
+1. **`CHANGELOG.md`** (unified, repo root) — a `## [version] - <date>` section
+   is prepended automatically, tagged `(dev)` for dev builds. Its body is:
+
+   ```
+   - Firmware <version> published for SKU(s): <skus>.
+     <your --notes text, each line indented two spaces>
+   ```
+
+   **Omit `--notes` and the entry has NO description** — just the bare
+   "Firmware … published" line (that's why several older entries read blank).
+   Always pass `--notes` so the user-facing changelog says what changed.
+
+2. **The GitHub release body** — auto-generated as:
+
+   ```
+   C Wall Monitor firmware <version>.
+
+   SKU(s): <skus>.
+
+   <your --notes text>
+   ```
+
+   The release **title** is the tag (`vX.Y.Z`, or `vX.Y.Z-dev.<ts> (dev)` for
+   dev) and is set automatically. To replace the entire body with a
+   hand-written file use `--notes-file PATH` (the CHANGELOG still only picks up
+   `--notes`, so pass both if you want a rich body AND a changelog line).
+
+**Brand-text rule:** user-facing prose is always **C Wall Monitor** or **cwm**,
+never "Claude Wall Monitor" — the repo is public and must not lean on the Claude
+trademark. The auto-generated body already complies; keep any `--notes` /
+`--notes-file` text consistent.
+
+**What to write:** one concise, present-tense, *user-facing* sentence about the
+impact — not internal refactors. Match the existing style. Real examples:
+
+- stable: `--notes "Device-authoritative display settings: report-back endpoint
+  so the broker stops reverting the user's theme/brightness/volume. Promoted
+  from dev canary (byte-identical to the soaked 0.7.2 build)."`
+- dev: `--notes "First dev-channel iteration toward 0.6.8 (prerelease ordering
+  test)."`
+
+When a stable graduates a soaked dev canary, say so and note it's
+byte-identical (as 0.7.2 did). Multi-line `--notes` is fine — every line is
+indented under the CHANGELOG bullet and copied verbatim into the release body.
 
 ## Publish a STABLE release
 
@@ -74,10 +125,13 @@ source /opt/esp-idf/export.sh
 python3 -c "d=open('firmware/build/cwm_wall_monitor.bin','rb').read(); \
 i=d.find(b'\x32\x54\xcd\xab'); print(d[i+16:i+48].split(b'\x00',1)[0].decode())"
 
-# 3. Sign + publish (cuts vX.Y.Z, becomes 'latest').
+# 3. Sign + publish (cuts vX.Y.Z, becomes 'latest'). --notes is the
+#    user-facing line for BOTH the changelog and the release body (see
+#    "Changelog & release notes"); omit it and the entry has no description.
 PYTHONPATH=tools python -m cwmtools.ota.publish \
     --channel stable --version X.Y.Z --sku S1 \
-    --bin firmware/build/cwm_wall_monitor.bin
+    --bin firmware/build/cwm_wall_monitor.bin \
+    --notes "One user-facing sentence describing the change."
 ```
 
 For stable, `cwm_version.h` **is** committed + git-tagged `vX.Y.Z` in the
@@ -91,10 +145,13 @@ monorepo (it's a real release). `--channel stable` refuses a `-dev.*` version.
 ( cd firmware && idf.py build )   # verify exit status
 
 # 2. Publish. Pass only the BASE version; publish reads the exact -dev.<ts>
-#    from the binary, signs channel:"dev", clobbers the rolling `dev` tag.
+#    from the binary, signs channel:"dev", cuts an IMMUTABLE per-version
+#    prerelease tag vX.Y.Z-dev.<ts>. Write the user-facing note with --notes
+#    (see "Changelog & release notes" — without it the entry has no description).
 PYTHONPATH=tools python -m cwmtools.ota.publish \
     --channel dev --version X.Y.Z --sku S1 \
-    --bin firmware/build/cwm_wall_monitor.bin
+    --bin firmware/build/cwm_wall_monitor.bin \
+    --notes "One user-facing sentence describing the change."
 
 # 3. Restore the source so the timestamp never lands in git:
 git checkout firmware/components/core/include/cwm_version.h
