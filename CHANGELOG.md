@@ -1,6 +1,6 @@
 # Changelog
 
-All notable firmware releases for the Claude Wall Monitor are documented
+All notable firmware releases for the C Wall Monitor are documented
 here. Each entry corresponds to a signed GitHub release whose assets the
 cwm-mcp broker discovers and stages automatically. Both channels share this
 one chronological history; **dev** (prerelease / canary) entries are tagged
