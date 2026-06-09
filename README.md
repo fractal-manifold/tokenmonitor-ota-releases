@@ -51,20 +51,23 @@ There are two channels, so test builds only ever reach development units:
   GitHub serves the newest non‑prerelease as `latest`, which is what the
   `latest/download/update-<SKU>.json` URL above resolves to. Production
   units only ever follow this channel.
-- **dev** (development units): a single **rolling prerelease** on the fixed
-  tag `dev`. Each dev publish clobbers that release's `update-<SKU>.json`
-  asset, so the broker has a stable URL that always points at the newest dev
-  build:
+- **dev** (development units): each dev build is its own **immutable
+  prerelease** tagged `vX.Y.Z-dev.<YYYYMMDDhhmm>` (the canary suffix makes
+  every build a distinct tag — releases are never deleted, so every prior dev
+  `.bin` stays downloadable, which is what lets `revert_firmware` point back at
+  an earlier one). Because it's marked **prerelease**, GitHub never serves it
+  as `latest`, so a stable device can't fetch it. There is **no** "latest
+  prerelease" redirect: the broker discovers the newest dev build via the
+  GitHub Releases API and fetches that tag's asset:
 
   ```
-  https://github.com/fractal-manifold/cwm-ota-releases/releases/download/dev/update-<SKU>.json
+  https://github.com/fractal-manifold/cwm-ota-releases/releases/download/vX.Y.Z-dev.<ts>/update-<SKU>.json
   ```
 
-  Because it's marked **prerelease**, GitHub never serves it as `latest`, so
-  a stable device can't fetch it. The dev manifest additionally carries
-  `"channel":"dev"`, and the firmware **refuses** it on a production unit
-  (only units whose serial FAC == `DEV` accept it). Dev indices live under
-  `dev/` in this repo.
+  The dev manifest additionally carries `"channel":"dev"`, and the firmware
+  **refuses** it on a production unit (only units whose serial FAC == `DEV`
+  accept it). The per-SKU dev index is also committed under `dev/` in this repo
+  for diff-friendly history.
 
 Publish with `--channel dev`; dev units must be registered with
 `channel = "dev"` in the broker. Reverting a bad dev build (within its
