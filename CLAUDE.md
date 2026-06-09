@@ -1,6 +1,6 @@
 # ota-releases — how to publish an OTA (for AI assistants)
 
-This is the **public** firmware release channel for Claude Wall Monitor
+This is the **public** firmware release channel for C Wall Monitor
 (`fractal-manifold/cwm-ota-releases`), vendored in the monorepo as the
 `ota-releases/` submodule. The cwm-mcp broker polls it, verifies the manifest
 signature, and stages matching devices; the device verifies again and installs

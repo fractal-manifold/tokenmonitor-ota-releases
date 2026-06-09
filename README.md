@@ -1,7 +1,7 @@
-# Claude Wall Monitor — OTA release channel
+# C Wall Monitor — OTA release channel
 
 This is the **public** firmware release channel for the
-[Claude Wall Monitor](https://github.com/fractal-manifold) (cwm), an
+[C Wall Monitor](https://github.com/fractal-manifold) (cwm), an
 ESP32‑S3 desk display. It doubles as the user‑facing changelog (see
 [`CHANGELOG.md`](CHANGELOG.md)).
 
