@@ -11,6 +11,11 @@ versions follow [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`,
 the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
+## [0.8.1] - 2026-06-10
+
+- Firmware 0.8.1 published for SKU(s): S1.
+  Fixes a startup crash loop that could leave C Wall Monitor stuck on the waiting screen and blocked over-the-air updates from completing.
+
 ## [0.8.0] - 2026-06-10
 
 - Firmware 0.8.0 published for SKU(s): S1.
