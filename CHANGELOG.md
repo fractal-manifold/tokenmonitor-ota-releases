@@ -11,6 +11,11 @@ versions follow [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`,
 the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
+## [0.8.0] - 2026-06-10
+
+- Firmware 0.8.0 published for SKU(s): S1.
+  Token-fed pet mascot on the dashboard — a tamagotchi that reacts to your usage — with a dedicated care screen that re-themes live on Day / Night / Auto. Also smoother RGB display (tearing fix) and the four-way per-provider mode. Graduates the soaked 0.8.0-dev canary.
+
 ## [0.8.0-dev.202606091938] - 2026-06-09 (dev)
 
 - Firmware 0.8.0-dev.202606091938 published for SKU(s): S1.
