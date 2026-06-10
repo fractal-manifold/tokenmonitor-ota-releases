@@ -67,16 +67,19 @@ author is one short line passed via `--notes`. Two artifacts are generated from
 it:
 
 1. **`CHANGELOG.md`** (unified, repo root) — a `## [version] - <date>` section
-   is prepended automatically, tagged `(dev)` for dev builds. Its body is:
+   is prepended automatically, tagged `(dev)` for dev builds. Your `--notes`
+   text IS the body:
 
    ```
-   - Firmware <version> published for SKU(s): <skus>.
-     <your --notes text, each line indented two spaces>
+   - <your --notes first line — becomes the bullet>
+     <remaining --notes lines, indented two spaces>
    ```
 
-   **Omit `--notes` and the entry has NO description** — just the bare
-   "Firmware … published" line (that's why several older entries read blank).
-   Always pass `--notes` so the user-facing changelog says what changed.
+   The version is **not** repeated (it's the heading) and a single-SKU build is
+   **not** qualified — only a multi-SKU build adds a trailing `- SKUs: …`
+   bullet. **Omit `--notes` and the entry has NO description** — just a bare
+   `- Firmware published.` placeholder (that's why several older entries read
+   blank). Always pass `--notes` so the user-facing changelog says what changed.
 
 2. **The GitHub release body** — auto-generated as:
 
