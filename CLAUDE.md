@@ -1,8 +1,8 @@
 # ota-releases — how to publish an OTA (for AI assistants)
 
-This is the **public** firmware release channel for C Wall Monitor
-(`fractal-manifold/cwm-ota-releases`), vendored in the monorepo as the
-`ota-releases/` submodule. The cwm-mcp broker polls it, verifies the manifest
+This is the **public** firmware release channel for TokenMonitor
+(`fractal-manifold/tokenmonitor-ota-releases`), vendored in the monorepo as the
+`ota-releases/` submodule. The tokenmonitor-mcp broker polls it, verifies the manifest
 signature, and stages matching devices; the device verifies again and installs
 under the rollback safety net. See the monorepo `CLAUDE.md` ("OTA pipeline",
 "Broker-driven OTA", "Release channels") for the full design — this file is the
@@ -11,7 +11,7 @@ under the rollback safety net. See the monorepo `CLAUDE.md` ("OTA pipeline",
 ## Golden rules
 
 - **Never hand-edit** `update-<SKU>.json`, the `.bin` assets, or `CHANGELOG.md`
-  here. They are generated and pushed by `python -m cwmtools.ota.publish`. The
+  here. They are generated and pushed by `python -m tmtools.ota.publish`. The
   copies in the git tree are diff-friendly history; the live artifacts are the
   GitHub **release assets**.
 - **One unified `CHANGELOG.md` at the repo root** for both channels (dev entries
@@ -20,13 +20,13 @@ under the rollback safety net. See the monorepo `CLAUDE.md` ("OTA pipeline",
 - **The signing key is offline.** Publishing signs the manifest locally with
   `firmware/secrets/ota_signing_key.pem`. The broker holds only the *public*
   key. A `.bin` on a public URL is useless without a valid signature.
-- **The version is baked into the binary.** `cwmtools.ota.publish` reads the
+- **The version is baked into the binary.** `tmtools.ota.publish` reads the
   `.bin`'s `esp_app_desc.app_version` and treats it as authoritative — the
   manifest `version` is whatever the firmware was built with. If the baked
   version and the manifest disagree, the device's `clear_pending_if_satisfied`
   never clears the pending → re-download loop. Don't fight this; build the
   binary with the exact version you intend to ship.
-- All `python -m cwmtools.*` commands run **from the monorepo root** with
+- All `python -m tmtools.*` commands run **from the monorepo root** with
   `PYTHONPATH=tools` (or from `tools/` with `PYTHONPATH=.`). Paths below are
   relative to the monorepo root.
 
@@ -35,14 +35,14 @@ under the rollback safety net. See the monorepo `CLAUDE.md` ("OTA pipeline",
 - ESP-IDF env sourced (`source /opt/esp-idf/export.sh`) for building.
 - `gh` authenticated against `fractal-manifold` (publish does `gh release …`).
 - `firmware/secrets/ota_signing_key.pem` present. If missing, fetch from GCP
-  Secret Manager (project `cwallmonitor`):
+  Secret Manager (project `tokenmonitor`):
   ```sh
   gcloud secrets versions access latest --secret=cwm-ota-signing-key \
-      --project=cwallmonitor --out-file=firmware/secrets/ota_signing_key.pem
+      --project=tokenmonitor --out-file=firmware/secrets/ota_signing_key.pem
   ```
-- The broker's `cwm.toml` must carry the matching `[[ota.keys]]` pubkey (only
+- The broker's `tokenmonitor.toml` must carry the matching `[[ota.keys]]` pubkey (only
   needed for the auto-discovery path, not for manual staging). Get it with
-  `python -m cwmtools.lib.manifest pubkey --key firmware/secrets/ota_signing_key.pem`.
+  `python -m tmtools.lib.manifest pubkey --key firmware/secrets/ota_signing_key.pem`.
 
 ## Channels
 
@@ -62,7 +62,7 @@ only orders builds.
 
 ## Changelog & release notes — what to write
 
-`cwmtools.ota.publish` writes ALL the release prose for you; the only thing you
+`tmtools.ota.publish` writes ALL the release prose for you; the only thing you
 author is one short line passed via `--notes`. Two artifacts are generated from
 it:
 
@@ -84,7 +84,7 @@ it:
 2. **The GitHub release body** — auto-generated as:
 
    ```
-   C Wall Monitor firmware <version>.
+   TokenMonitor firmware <version>.
 
    SKU(s): <skus>.
 
@@ -96,8 +96,8 @@ it:
    hand-written file use `--notes-file PATH` (the CHANGELOG still only picks up
    `--notes`, so pass both if you want a rich body AND a changelog line).
 
-**Brand-text rule:** user-facing prose is always **C Wall Monitor** or **cwm**,
-never "Claude Wall Monitor" — the repo is public and must not lean on the Claude
+**Brand-text rule:** user-facing prose is always **TokenMonitor** or **cwm**,
+never "TokenMonitor" — the repo is public and must not lean on the Claude
 trademark. The auto-generated body already complies; keep any `--notes` /
 `--notes-file` text consistent.
 
@@ -118,46 +118,46 @@ indented under the CHANGELOG bullet and copied verbatim into the release body.
 
 ```sh
 # 1. Build with the exact version baked in.
-#    Set CWM_VERSION_STRING in firmware/components/core/include/cwm_version.h
+#    Set TMON_VERSION_STRING in firmware/components/core/include/tmon_version.h
 #    to "X.Y.Z", then:
 source /opt/esp-idf/export.sh
 ( cd firmware && idf.py build )   # CHECK the real exit status — a trailing
                                   # echo can mask a failed build as exit 0.
 
 # 2. Verify the baked version (defensive):
-python3 -c "d=open('firmware/build/cwm_wall_monitor.bin','rb').read(); \
+python3 -c "d=open('firmware/build/tmon_wall_monitor.bin','rb').read(); \
 i=d.find(b'\x32\x54\xcd\xab'); print(d[i+16:i+48].split(b'\x00',1)[0].decode())"
 
 # 3. Sign + publish (cuts vX.Y.Z, becomes 'latest'). --notes is the
 #    user-facing line for BOTH the changelog and the release body (see
 #    "Changelog & release notes"); omit it and the entry has no description.
-PYTHONPATH=tools python -m cwmtools.ota.publish \
+PYTHONPATH=tools python -m tmtools.ota.publish \
     --channel stable --version X.Y.Z --sku S1 \
-    --bin firmware/build/cwm_wall_monitor.bin \
+    --bin firmware/build/tmon_wall_monitor.bin \
     --notes "One user-facing sentence describing the change."
 ```
 
-For stable, `cwm_version.h` **is** committed + git-tagged `vX.Y.Z` in the
+For stable, `tmon_version.h` **is** committed + git-tagged `vX.Y.Z` in the
 monorepo (it's a real release). `--channel stable` refuses a `-dev.*` version.
 
 ## Publish a DEV build
 
 ```sh
-# 1. Bake a dev version TRANSIENTLY (do NOT commit cwm_version.h):
-#    CWM_VERSION_STRING "X.Y.Z-dev.<YYYYMMDDhhmm>"   (next stable + timestamp)
+# 1. Bake a dev version TRANSIENTLY (do NOT commit tmon_version.h):
+#    TMON_VERSION_STRING "X.Y.Z-dev.<YYYYMMDDhhmm>"   (next stable + timestamp)
 ( cd firmware && idf.py build )   # verify exit status
 
 # 2. Publish. Pass only the BASE version; publish reads the exact -dev.<ts>
 #    from the binary, signs channel:"dev", cuts an IMMUTABLE per-version
 #    prerelease tag vX.Y.Z-dev.<ts>. Write the user-facing note with --notes
 #    (see "Changelog & release notes" — without it the entry has no description).
-PYTHONPATH=tools python -m cwmtools.ota.publish \
+PYTHONPATH=tools python -m tmtools.ota.publish \
     --channel dev --version X.Y.Z --sku S1 \
-    --bin firmware/build/cwm_wall_monitor.bin \
+    --bin firmware/build/tmon_wall_monitor.bin \
     --notes "One user-facing sentence describing the change."
 
 # 3. Restore the source so the timestamp never lands in git:
-git checkout firmware/components/core/include/cwm_version.h
+git checkout firmware/components/core/include/tmon_version.h
 ```
 
 To iterate, bump the timestamp (a larger `<ts>`), rebuild, publish again — the
@@ -175,10 +175,10 @@ Two paths — both end at the same on-device gate:
 
 - **Auto-discovery (preferred when the broker runs the new code):** the leader
   broker polls this repo every `[ota].poll_interval_minutes` and stages matching
-  devices. Force/preview it now with the `wall_monitor_check_updates` MCP tool
+  devices. Force/preview it now with the `tokenmonitor_check_updates` MCP tool
   (`dry_run` to preview). Dev units must be registered with `channel = "dev"`.
 - **Manual staging (broker-version-independent):** call
-  `wall_monitor_set_device_pending` with `firmware_url`, `firmware_sha256`,
+  `tokenmonitor_set_device_pending` with `firmware_url`, `firmware_sha256`,
   `firmware_version`, `firmware_manifest_b64`, `firmware_manifest_sig_b64` — read
   those straight from the published `update-<SKU>.json` (the `sha256` lives
   inside the decoded `manifest_b64`). Use this when the running broker daemon
@@ -188,7 +188,7 @@ Two paths — both end at the same on-device gate:
 
 A dev unit defers the anti-rollback floor bump for 24 h after confirm, so the
 previous version still passes the floor gate. Point
-`wall_monitor_revert_firmware` at the **previous** channel index's
+`tokenmonitor_revert_firmware` at the **previous** channel index's
 `firmware_url`/`firmware_sha256`/`firmware_manifest_b64`/`_sig_b64`/
 `firmware_version`. No new wire field. Production units never enter probation —
 they roll **forward** only (publish the fix as a higher version; the floor makes
@@ -207,12 +207,12 @@ git -C <monorepo> push
 
 ## Gotchas (learned the hard way)
 
-- A USB/esptool flash does **not** bump `cwm_min_sv`, so the broker will keep
+- A USB/esptool flash does **not** bump `tmon_min_sv`, so the broker will keep
   re-staging the same OTA. Use the OTA path, or flash **both** OTA slots and let
   the image self-confirm (flashing only `ota_0` with rollback armed reverts to a
   stale `ota_1`).
 - Always confirm the *running* version via the device boot banner / diagnostic
-  logs (`wall_monitor_device_logs`), not the registry's `active.firmware_version`
+  logs (`tokenmonitor_device_logs`), not the registry's `active.firmware_version`
   — the latter advances on config promotion, which can precede the actual reboot.
 - `--dry-run` signs + builds the plan without touching git/GitHub; use it to
   sanity-check before a real publish.

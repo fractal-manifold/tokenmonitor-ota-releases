@@ -1,8 +1,8 @@
 # Changelog
 
-All notable firmware releases for the C Wall Monitor are documented
+All notable firmware releases for the TokenMonitor are documented
 here. Each entry corresponds to a signed GitHub release whose assets the
-cwm-mcp broker discovers and stages automatically. Both channels share this
+tokenmonitor-mcp broker discovers and stages automatically. Both channels share this
 one chronological history; **dev** (prerelease / canary) entries are tagged
 `(dev)`, **stable** entries are not.
 
@@ -18,7 +18,7 @@ Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 ## [0.8.1] - 2026-06-10
 
 - Firmware 0.8.1 published for SKU(s): S1.
-  Fixes a startup crash loop that could leave C Wall Monitor stuck on the waiting screen and blocked over-the-air updates from completing.
+  Fixes a startup crash loop that could leave TokenMonitor stuck on the waiting screen and blocked over-the-air updates from completing.
 
 ## [0.8.0] - 2026-06-10
 

@@ -1,7 +1,7 @@
-# C Wall Monitor — OTA release channel
+# TokenMonitor — OTA release channel
 
 This is the **public** firmware release channel for the
-[C Wall Monitor](https://github.com/fractal-manifold) (cwm), an
+[TokenMonitor](https://github.com/fractal-manifold) (cwm), an
 ESP32‑S3 desk display. It doubles as the user‑facing changelog (see
 [`CHANGELOG.md`](CHANGELOG.md)).
 
@@ -11,7 +11,7 @@ The cwm‑mcp broker polls this repo on a schedule. For each hardware SKU it
 fetches the stable "latest" asset:
 
 ```
-https://github.com/fractal-manifold/cwm-ota-releases/releases/latest/download/update-<SKU>.json
+https://github.com/fractal-manifold/tokenmonitor-ota-releases/releases/latest/download/update-<SKU>.json
 ```
 
 That `update-<SKU>.json` index looks like:
@@ -21,7 +21,7 @@ That `update-<SKU>.json` index looks like:
   "version": "0.6.0",
   "manifest_b64": "<canonical OTA manifest, base64>",
   "signature_b64": "<64-byte Ed25519 signature, base64>",
-  "bin_url": "https://github.com/fractal-manifold/cwm-ota-releases/releases/download/v0.6.0/cwm-<SKU>-0.6.0.bin"
+  "bin_url": "https://github.com/fractal-manifold/tokenmonitor-ota-releases/releases/download/v0.6.0/cwm-<SKU>-0.6.0.bin"
 }
 ```
 
@@ -61,7 +61,7 @@ There are two channels, so test builds only ever reach development units:
   GitHub Releases API and fetches that tag's asset:
 
   ```
-  https://github.com/fractal-manifold/cwm-ota-releases/releases/download/vX.Y.Z-dev.<ts>/update-<SKU>.json
+  https://github.com/fractal-manifold/tokenmonitor-ota-releases/releases/download/vX.Y.Z-dev.<ts>/update-<SKU>.json
   ```
 
   The dev manifest additionally carries `"channel":"dev"`, and the firmware
@@ -71,7 +71,7 @@ There are two channels, so test builds only ever reach development units:
 
 Publish with `--channel dev`; dev units must be registered with
 `channel = "dev"` in the broker. Reverting a bad dev build (within its
-canary window) uses `wall_monitor_revert_firmware` against the previous
+canary window) uses `tokenmonitor_revert_firmware` against the previous
 index — see the monorepo CLAUDE.md "Release channels + canary".
 
 ### Dev version naming
@@ -83,7 +83,7 @@ SemVer `X.Y.Z-dev.<ts>` is always *older* than `X.Y.Z` final, and among
 prereleases the larger timestamp wins — so the newest dev build installs
 during development, and cutting `0.6.8` (no suffix) graduates over every
 `0.6.8-dev.*`. The version's base (0.6.8) drives the anti‑rollback floor;
-the `-dev.<ts>` suffix only orders builds. `cwmtools.ota.publish --channel
+the `-dev.<ts>` suffix only orders builds. `tmtools.ota.publish --channel
 dev --version 0.6.8` reads the exact `-dev.<ts>` from the firmware binary
 (it's baked at build time), so you pass only the base. A `-dev.<ts>` build
 is **only** valid on the dev channel; the firmware refuses a prerelease
@@ -99,5 +99,5 @@ version that isn't marked `channel:"dev"`.
 - Firmware `.bin` files ship **only** as GitHub release assets, never in the
   git tree.
 
-Releases are published manually with `python -m cwmtools.ota.publish` from
+Releases are published manually with `python -m tmtools.ota.publish` from
 the monorepo, which signs the manifest locally and uploads the assets here.
