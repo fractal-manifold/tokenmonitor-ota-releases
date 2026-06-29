@@ -11,6 +11,10 @@ versions follow [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`,
 the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
+## [0.9.3] - 2026-06-30
+
+- WiFi credential integrity (atomic save, self-heal, portal fallback, WPA3/PMF), spend-screen Day theme fix, settings/provisioning polish.
+
 ## [0.8.2] - 2026-06-10
 
 - Over-the-air updates now wait until the battery is at least 60% charged, leaving enough reserve to finish safely if power is interrupted mid-update. Also makes hardware-model (SKU) reporting consistent on non-factory/development units.
