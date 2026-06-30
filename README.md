@@ -1,7 +1,7 @@
 # TokenMonitor — OTA release channel
 
 This is the **public** firmware release channel for the
-[TokenMonitor](https://github.com/fractal-manifold) (cwm), an
+[TokenMonitor](https://github.com/fractal-manifold), an
 ESP32‑S3 desk display. It doubles as the user‑facing changelog (see
 [`CHANGELOG.md`](CHANGELOG.md)).
 
