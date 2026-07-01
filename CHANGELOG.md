@@ -11,6 +11,10 @@ versions follow [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`,
 the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
+## [0.9.6-dev.202607020058] - 2026-07-02 (dev)
+
+- Reliability round: OTA updates now survive user-initiated reboots and retry failed downloads, provider polling no longer freezes on long uptimes, and Antigravity quota errors show as 'usage unavailable' instead of a fake 0%.
+
 ## [0.9.5-dev.202607011836] - 2026-07-01 (dev)
 
 - Broker version advisory: the device now shows a banner and a Settings line when the tokenmonitor-mcp broker on your computer is out of date.
