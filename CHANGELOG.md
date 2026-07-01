@@ -11,6 +11,10 @@ versions follow [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`,
 the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
+## [0.9.4-dev.202607011430] - 2026-07-01 (dev)
+
+- 0.9.4 dev canary for unit 02c4777c
+
 ## [0.9.4] - 2026-07-01
 
 - Replace the Gemini provider card with Antigravity (agy): the third usage card now tracks Antigravity quota and spend.

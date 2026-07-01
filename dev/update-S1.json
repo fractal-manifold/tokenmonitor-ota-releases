@@ -1,0 +1,6 @@
+{
+  "version": "0.9.4-dev.202607011430",
+  "manifest_b64": "eyJjaGFubmVsIjoiZGV2Iiwia2V5X2lkIjoiZWQyNTUxOS1iZjA4M2FjNSIsIm1pbl9zZWN1cmVfdmVyc2lvbiI6NTg5ODI4LCJzaGEyNTYiOiI4N2Q0ZjY0YTdhZWQzYTA5MjU0Mzg1NTA0MTY1YTkyNmIyMzFiODc4MWFmNmExY2E1YWU2YzMwOWZhODc2NDE4Iiwic2l6ZSI6MjE5NzY2NCwic2t1IjoiUzEiLCJ2ZXJzaW9uIjoiMC45LjQtZGV2LjIwMjYwNzAxMTQzMCJ9",
+  "signature_b64": "fargGNQNzUE3oWT7L8Cjf+3AFCWIpgUEVNQMZZW6LL9Os2q1/P029C1spSLvtjxA0+7uebfC3lCGsk1nnH9ZBg==",
+  "bin_url": "https://github.com/fractal-manifold/tokenmonitor-ota-releases/releases/download/v0.9.4-dev.202607011430/tokenmonitor-S1-0.9.4-dev.202607011430.bin"
+}
