@@ -11,6 +11,10 @@ versions follow [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`,
 the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
+## [0.9.7-dev.202607022355] - 2026-07-03 (dev)
+
+- Custom panel: real multi-tile layout — 1 full-screen, 2 stacked, 3-4 in a 2x2 grid (compact tiles). Fix: 'Current' session card could stay hidden after a reauth/degraded episode until a reboot.
+
 ## [0.9.6-dev.202607020058] - 2026-07-02 (dev)
 
 - Reliability round: OTA updates now survive user-initiated reboots and retry failed downloads, provider polling no longer freezes on long uptimes, and Antigravity quota errors show as 'usage unavailable' instead of a fake 0%.
