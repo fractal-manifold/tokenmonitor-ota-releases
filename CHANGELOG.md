@@ -11,6 +11,10 @@ versions follow [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`,
 the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
+## [0.9.8] - 2026-07-03
+
+- Custom panel: a swipe-up screen for your own broker-fed charts and tables (line/bar/pie/table/text, up to 4 tiles), rendered in a neutral grayscale theme so it is not tinted by the active provider. Reliability: OTA updates survive user-initiated reboots and retry failed downloads; provider polling no longer freezes on long uptimes. Antigravity quota errors now show "usage unavailable" instead of a fake 0%. New banner when your tokenmonitor-mcp broker is out of date.
+
 ## [0.9.7-dev.202607022355] - 2026-07-03 (dev)
 
 - Custom panel: real multi-tile layout — 1 full-screen, 2 stacked, 3-4 in a 2x2 grid (compact tiles). Fix: 'Current' session card could stay hidden after a reauth/degraded episode until a reboot.
