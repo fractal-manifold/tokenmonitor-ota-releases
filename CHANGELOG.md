@@ -11,6 +11,10 @@ versions follow [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`,
 the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
+## [0.9.8-dev.202607041608] - 2026-07-04 (dev)
+
+- Footer dot hidden for broker-disabled providers; OTA power gate opens on USB or >=60% battery (either).
+
 ## [0.9.8] - 2026-07-03
 
 - Custom panel: a swipe-up screen for your own broker-fed charts and tables (line/bar/pie/table/text, up to 4 tiles), rendered in a neutral grayscale theme so it is not tinted by the active provider. Reliability: OTA updates survive user-initiated reboots and retry failed downloads; provider polling no longer freezes on long uptimes. Antigravity quota errors now show "usage unavailable" instead of a fake 0%. New banner when your tokenmonitor-mcp broker is out of date.
