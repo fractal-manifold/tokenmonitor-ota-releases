@@ -11,6 +11,10 @@ versions follow [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`,
 the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
+## [0.9.9] - 2026-07-04
+
+- First production-ready release: Secure Boot v2 signed image; provider footer dot hides when disabled at the broker; OTA proceeds on USB power or at 60%+ battery.
+
 ## [0.9.8-dev.202607041612] - 2026-07-04 (dev)
 
 - Footer dot hidden for broker-disabled providers; OTA power gate opens on USB or >=60% battery (either).
