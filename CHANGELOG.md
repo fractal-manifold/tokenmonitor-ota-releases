@@ -11,6 +11,10 @@ versions follow [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`,
 the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
+## [0.9.11] - 2026-07-07
+
+- Fix NVS encryption key-protection scheme so flash-encrypted production units boot instead of crash-looping; factory burn tooling now verifies in Secure Download Mode.
+
 ## [0.9.9] - 2026-07-04
 
 - First production-ready release: Secure Boot v2 signed image; provider footer dot hides when disabled at the broker; OTA proceeds on USB power or at 60%+ battery.
