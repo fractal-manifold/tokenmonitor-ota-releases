@@ -1,6 +1,6 @@
 {
-  "version": "0.9.11",
-  "manifest_b64": "eyJrZXlfaWQiOiJlZDI1NTE5LWJmMDgzYWM1IiwibWluX3NlY3VyZV92ZXJzaW9uIjo1ODk4MzUsInNoYTI1NiI6ImFjMTMzNjA0YWVlYzRlYTY4MjBlNjE0OTY4ZTA5ZjI3NmRlMTk5ZGY2MDQxYjc1NmMxOGZmZTMyYjVlYzE2ZmIiLCJzaXplIjoyMjk3ODU2LCJza3UiOiJTMSIsInZlcnNpb24iOiIwLjkuMTEifQ==",
-  "signature_b64": "AILlrmLdMjp5pr43DBTkAc1h3PufjZqPiX4bI7m4JrHdzwvlNCEINQTDWWi/P20QHc5zfw3NqGDaK/As9tPNCw==",
-  "bin_url": "https://github.com/fractal-manifold/tokenmonitor-ota-releases/releases/download/v0.9.11/tokenmonitor-S1-0.9.11.bin"
+  "version": "0.9.15",
+  "manifest_b64": "eyJrZXlfaWQiOiJlZDI1NTE5LWJmMDgzYWM1IiwibWluX3NlY3VyZV92ZXJzaW9uIjo1ODk4MzksInNoYTI1NiI6IjY5Yzc3MzA3YWYwM2QzZjlkNDU1YzU5NWE0ZTFiODZjZjQ4MjFkOTAwNzNlNWFmYmE5NWEyYTRmYmUwM2Y0OTgiLCJzaXplIjoyMjMyMzIwLCJza3UiOiJTMSIsInZlcnNpb24iOiIwLjkuMTUifQ==",
+  "signature_b64": "E0IsqWdwMRWmWrlJIpM04GtR9Ht1g1xN37wbAdeH+Da3KXEkp849UyE7Dog9Q/uqnK7e5de0PZT5w8IOmESxAg==",
+  "bin_url": "https://github.com/fractal-manifold/tokenmonitor-ota-releases/releases/download/v0.9.15/tokenmonitor-S1-0.9.15.bin"
 }

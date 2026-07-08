@@ -11,6 +11,10 @@ versions follow [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`,
 the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
+## [0.9.15] - 2026-07-08
+
+- Steadier LCD refresh that eliminates the scroll-time image shift and flicker on 4-inch units.
+
 ## [0.9.11] - 2026-07-07
 
 - Fix NVS encryption key-protection scheme so flash-encrypted production units boot instead of crash-looping; factory burn tooling now verifies in Secure Download Mode.
