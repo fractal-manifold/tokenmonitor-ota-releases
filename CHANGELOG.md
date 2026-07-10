@@ -11,6 +11,10 @@ versions follow [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`,
 the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
+## [0.9.16] - 2026-07-10
+
+- Unified dev/prod firmware on a single stable OTA channel. Fix: tcpip task stack overflow (3072->5120) that crash-looped SoftAP captive-portal provisioning when a phone's mDNS/DNS-SD burst hit during DHCP. Disable the app-startup Flash-Encryption tripwire (SECURE_FLASH_CHECK_ENC_EN_IN_APP=n) so the same signed image also boots trusted un-burned dev units.
+
 ## [0.9.15] - 2026-07-08
 
 - Steadier LCD refresh that eliminates the scroll-time image shift and flicker on 4-inch units.
