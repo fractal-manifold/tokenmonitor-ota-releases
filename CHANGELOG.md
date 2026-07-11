@@ -11,6 +11,10 @@ versions follow [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`,
 the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
+## [0.9.17] - 2026-07-11
+
+- Signed request bodies (HMAC v3) on settings/log uploads, OTA self-confirm now requires broker contact before committing (offline rollback safety), and hardening across broker-pushed settings bounds, multibyte city names, Wi-Fi scan recovery and NVS anti-rollback preservation. Requires broker 0.9.18+.
+
 ## [0.9.16] - 2026-07-10
 
 - Unified dev/prod firmware on a single stable OTA channel. Fix: tcpip task stack overflow (3072->5120) that crash-looped SoftAP captive-portal provisioning when a phone's mDNS/DNS-SD burst hit during DHCP. Disable the app-startup Flash-Encryption tripwire (SECURE_FLASH_CHECK_ENC_EN_IN_APP=n) so the same signed image also boots trusted un-burned dev units.
