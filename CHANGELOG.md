@@ -11,6 +11,10 @@ versions follow [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`,
 the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
+## [0.10.0] - 2026-07-16
+
+- Standby now fully powers the device off via the PMIC — zero standby drain and no residual backlight glow. Wake with the power button (cold boot). A 10 s grace window after the screen blanks lets a tap cancel the power-off, and any in-progress update is committed safely first.
+
 ## [0.9.17] - 2026-07-11
 
 - Signed request bodies (HMAC v3) on settings/log uploads, OTA self-confirm now requires broker contact before committing (offline rollback safety), and hardening across broker-pushed settings bounds, multibyte city names, Wi-Fi scan recovery and NVS anti-rollback preservation. Requires broker 0.9.18+.
