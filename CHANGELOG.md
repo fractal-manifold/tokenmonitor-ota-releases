@@ -11,6 +11,10 @@ versions follow [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`,
 the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
+## [0.10.2] - 2026-07-18
+
+- The clock and date now stay hidden until the device syncs real network time, instead of briefly showing an incorrect default after boot.
+
 ## [0.10.0] - 2026-07-16
 
 - Standby now fully powers the device off via the PMIC — zero standby drain and no residual backlight glow. Wake with the power button (cold boot). A 10 s grace window after the screen blanks lets a tap cancel the power-off, and any in-progress update is committed safely first.
