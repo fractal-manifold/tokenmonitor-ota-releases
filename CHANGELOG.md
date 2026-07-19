@@ -11,6 +11,10 @@ versions follow [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`,
 the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
+## [0.10.3] - 2026-07-19
+
+- The PWR button now powers the device off during first-boot setup, not only after it's paired.
+
 ## [0.10.2] - 2026-07-18
 
 - The clock and date now stay hidden until the device syncs real network time, instead of briefly showing an incorrect default after boot.
