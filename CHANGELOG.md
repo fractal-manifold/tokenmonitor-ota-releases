@@ -11,6 +11,10 @@ versions follow [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`,
 the same packed 8.8.16 value the firmware uses for its anti-rollback floor).
 Dev canaries carry a `-dev.<YYYYMMDDhhmm>` prerelease suffix.
 
+## [1.0.2] - 2026-11-25
+
+- Fixes a device staying offline after its WiFi link dropped: it now reconnects by itself, falling back to its other remembered networks, without needing a reboot.
+
 ## [1.0.1] - 2026-09-22
 
 - Finds the broker again on its own after the computer's IP address changes, and only trusts a broker that proves it holds the pairing key.
